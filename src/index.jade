@@ -20,23 +20,63 @@ html
 				p @sebasporto
 
 			section
-				h2 Speed
-				h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a>
-				ul
-					li Bullet 1
-					li Bullet 2
-					li Bullet 3
+				h2 It is fast
 
 			section
-				h2 Speed example
+				h2 Ruby
+				h3 Speed
 				hr
-				code.language-javascript
+				code.language-ruby
 					pre.
-						bespoke.horizontal.from('article', {
-							bullets: 'li, .bullet',
-							hash: true,
-							state: true
-						});
+						bubble = ->(list) do
+							return list if list.size <= 1 # already sorted
+							swapped = true
+							while swapped do
+								swapped = false
+								0.upto(list.size-2) do |i|
+									if list[i] > list[i+1]
+										list[i], list[i+1] = list[i+1], list[i] # swap values
+										swapped = true
+									end
+								end
+							end
+
+							list
+						end
+
+						bubble.call([2, 10, 1, 9, 5, 6, 8, 3, 7, 4])
+
+			section
+				h2 Go
+				h3 Speed
+				hr
+				code.language-clike
+					pre.
+						func bubble(s []int) {
+							for i := len(s) - 2; i >= 0; i-- {
+								for j := 0; j <= i; j++ {
+									if s[j] > s[j+1] {
+										s[j], s[j+1] = s[j+1], s[j]
+									}
+								}
+							}
+						}
+
+						arr := []int{2, 10, 1, 9, 5, 6, 8, 3, 7, 4}
+						bubble(arr)
+
+			section
+				h2 Speed 
+				p Ran 5 000 000 times
+
+				hr
+
+				p Ruby - 44,000 ns/op
+				p Go -   357 ns/op
+
+				hr
+
+				h3 120x faster
 
 			section
 				h2 Concurrency - Parallel requests
