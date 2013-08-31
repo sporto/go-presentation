@@ -1,0 +1,13 @@
+Laptop
+
+Go
+Benchmark_bubble	 5000000	       358 ns/op
+2,793,296 ops/sec
+
+Ruby
+0.000068
+
+14,705 ops/sec
+
+JS
+bubble x 1,116,619 ops/sec ±0.49% (98 runs sampled)
