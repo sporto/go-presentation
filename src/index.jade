@@ -239,7 +239,8 @@ html
 			section(data-bespoke-state='emphatic')
 				h2 But there is a lot more ...
 
-			section
+			section#simple
+				img(src='images/simple.png')
 				h2 Simple
 				ul
 					li Small Core
@@ -280,17 +281,8 @@ html
 
 			section
 				h2 Ultra Fast Compilation
-
-			section
-				h2 Multiple return values
-				h3 A sensible way not to mix return values and errors
-				code.language-ruby
-					pre.
-						# ruby
-						foo.add(1, "two") # should this return false? throw?
-
-						# go
-						res, err := add(x, y)
+				hr
+				img(src='images/flash.png')
 
 			section
 				h2 Imports
@@ -309,16 +301,27 @@ html
 				hr
 				ul
 					li It is all composition
-					li Inferred
+					li Inferred - If it quacks then it is a duck
 
 			section
 				h2 Modern Standard Library
 				ul
 					li http
-					li Crypto
+					li crypto
+					li sockets
+					li ... all batteries included
+
+			section
+				h2 More
+				ul
+					li Standardized formatting
+					li Multiple return values
+					li Closures
+					li Functions as first class
 
 			section
 				h2 Thanks
+				p @sebasporto
 
 		script(src='bower_components/bespoke.js/dist/bespoke.min.js')
 		script(src='bower_components/bespoke-bullets/dist/bespoke-bullets.min.js')
