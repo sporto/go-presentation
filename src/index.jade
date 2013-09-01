@@ -27,69 +27,22 @@ html
 				h2 It is fast
 
 			section
-				h3 Speed
-				h2 Ruby
-				hr
+				h2 Bubble sort benchmark
 				code.language-ruby
 					pre.
-						bubble = ->(list) do
-							return list if list.size <= 1 # already sorted
-							swapped = true
-							while swapped do
-								swapped = false
-								0.upto(list.size-2) do |i|
-									if list[i] > list[i+1]
-										list[i], list[i+1] = list[i+1], list[i] # swap values
-										swapped = true
-									end
-								end
-							end
-
-							list
-						end
-
+						# ruby
 						bubble.call([2, 10, 1, 9, 5, 6, 8, 3, 7, 4])
-
-
-			section
-				h3 Speed
-				h2 JS
 				hr
+
 				code.language-javascript
 					pre.
-						function bubble(a) {
-							var swapped;
-							do {
-								swapped = false;
-								for(var i = 0; i < a.length - 1; i++) {
-									if(a[i] > a[i + 1]) {
-										var temp = a[i];
-										a[i] = a[i + 1];
-										a[i + 1] = temp;
-										swapped = true;
-									}
-								}
-							} while (swapped);
-						}
-
+						// JS
 						bubble([2, 10, 1, 9, 5, 6, 8, 3, 7, 4]);
-
-			section
-				h3 Speed
-				h2 Go
 				hr
+
 				code.language-clike
 					pre.
-						func bubble(s []int) {
-							for i := len(s) - 2; i >= 0; i-- {
-								for j := 0; j <= i; j++ {
-									if s[j] > s[j+1] {
-										s[j], s[j+1] = s[j+1], s[j]
-									}
-								}
-							}
-						}
-
+						// Go
 						arr := []int{2, 10, 1, 9, 5, 6, 8, 3, 7, 4}
 						bubble(arr)
 
@@ -100,6 +53,10 @@ html
 				hr
 				hr
 				h3 190x faster than Ruby
+
+			section#concurrency-intro
+				h2 Concurrency
+				figure
 
 			section#parallel-wallpaper
 				figure
@@ -152,7 +109,7 @@ html
 
 						processConcat(x, y)
 
-			section#gopher
+			section#concurrency-memory
 				h1 &nbsp;
 				hr
 				figure
@@ -233,33 +190,25 @@ html
 				h2 It is awesome
 				h3 Try it!
 
-			section#wallpaper
-				figure
-
 			section(data-bespoke-state='emphatic')
 				h2 But there is a lot more ...
 
 			section#simple
-				img(src='images/simple.png')
 				h2 Simple
+				hr
 				ul
-					li Small Core
-					li Easy to learn
-					li Flexible
+					li Lightweight
+					li Relatively easy to learn
+					li Yet flexible
 
 			section
 				h2 Static typing
 				h3 Yes this is useful!
-
-			section
-				h2 Static typing
-				h3 Developer efficiency - less tests
-				code.language-ruby
-					pre.
-						# ruby
-						it "doesn't blow up when I pass something unexpected" do
-							add(1, "two")
-						end
+				hr
+				ul.left
+					li + Faster - Compiler can go crazy with optimisations
+					li + Easier to refactor
+					li + Developer efficiency - less tests
 
 			section
 				h2 Static typing 
@@ -271,13 +220,6 @@ html
 
 						# go
 						c := Circle{R: 15}
-
-			section
-				h2 Static typing
-				hr
-				ul
-					li Faster - Compiler can go crazy with optimisations
-					li Easier to refactor
 
 			section
 				h2 Ultra Fast Compilation
@@ -305,19 +247,21 @@ html
 
 			section
 				h2 Modern Standard Library
-				ul
-					li http
-					li crypto
-					li sockets
+				hr
+				ul.left
+					li + http
+					li + crypto
+					li + sockets
 					li ... all batteries included
 
 			section
 				h2 More
-				ul
-					li Standardized formatting
-					li Multiple return values
-					li Closures
-					li Functions as first class
+				hr
+				ul.left
+					li + Standardized formatting
+					li + Multiple return values
+					li + Closures
+					li + Functions as first class
 
 			section
 				h2 Thanks
