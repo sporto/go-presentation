@@ -1,0 +1,60 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>Go</title><link rel="stylesheet" type="text/css" href="bower_components/prism/prism-tomorrow.css"><link rel="stylesheet" type="text/css" href="styles/main.css"></head><body><article><section><h1>Go</h1><h2>A great language for modern web applications</h2><p>@sebasporto</p></section><section><h2>Why Go use for building web application?</h2><h3>Comparing it to Ruby and JS</h3></section><section id="fast-intro"><figure></figure><h2>It is fast</h2></section><section><h2>Bubble sort benchmark</h2><code class="language-ruby"><pre># ruby
+bubble.call([2, 10, 1, 9, 5, 6, 8, 3, 7, 4])</pre></code><hr><code class="language-javascript"><pre>// JS
+bubble([2, 10, 1, 9, 5, 6, 8, 3, 7, 4]);</pre></code><hr><code class="language-clike"><pre>// Go
+arr := []int{2, 10, 1, 9, 5, 6, 8, 3, 7, 4}
+bubble(arr)
+</pre></code></section><section id="speed-conclusion"><h2>It is fast! </h2><hr><img src="images/speed.png"><hr><hr><h3>190x faster than Ruby</h3></section><section id="concurrency-intro"><h2>Concurrency</h2><figure></figure></section><section id="parallel-wallpaper"><figure></figure></section><section><h2>Concurrency - Parallel requests</h2><hr><img src="images/parallel.png"></section><section id="ruby-parallel"><div><h3>Concurrency - Parallel requests</h3><h2>Ruby</h2><figure></figure><hr><ul><li>Mutex and Threads :(</li><li>EventMachine :(</li></ul></div></section><section><h3>Concurrency - Parallel requests</h3><h2>Node.js</h2><hr><code class="language-javascript"><pre>var defX = Q.defer();
+var defY = Q.defer();
+
+var oneAndTwo = Q
+ .all([defX.promise, defY.promise])
+ .then(processConcat);
+ 
+requestValue('/x', defX);
+requestValue('/y', defY);
+</pre></code></section><section><h3>Concurrency - Parallel requests</h3><h2>Go</h2><hr><code class="language-clike"><pre>var cx chan string = make(chan string)
+var cy chan string = make(chan string)
+
+go requestValue(&quot;/x&quot;, cx)
+go requestValue(&quot;/y&quot;, cy)
+
+x := &lt;-cx
+y := &lt;-cy
+
+processConcat(x, y)
+</pre></code></section><section id="concurrency-memory"><h1>&nbsp;</h1><hr><figure></figure></section><section><h2>Concurrency - Memory Usage</h2><img src="images/memory.png"></section><section><h3>Concurrency - Memory Usage</h3><h2>Node.js</h2><hr><code class="language-javascript"><pre>var http = require('http')
+var Buffer = require('buffer').Buffer;
+var n = 1024*1024;
+var b = new Buffer(n);
+for (var i = 0; i &lt; n; i++) b[i] = 100;
+
+http.createServer(function (req, res) {
+ res.writeHead(200);
+ res.end(b);
+}).listen(8100);
+</pre></code></section><section><h3>Concurrency - Memory Usage</h3><h2>Go</h2><hr><code class="language-clike"><pre>package main
+
+import &quot;net/http&quot;
+func main() {
+ bytes := make([]byte, 1024*1024)
+ for i := 0; i &lt; len(bytes); i++ {
+  bytes[i] = 100
+ }
+ 
+ http.HandleFunc(&quot;/&quot;, func(w http.ResponseWriter, r *http.Request) {
+  w.Write(bytes)
+ })
+ http.ListenAndServe(&quot;:8100&quot;, nil)
+}
+</pre></code></section><section id="memory-node-result"><h3>Concurrency - Memory Usage</h3><h2>Node.js</h2><hr><code class="language-bash"><pre># Run benchmark
+ab -n 10000 -c 100 http://127.0.0.1:8100/
+
+# Very likely to get this
+FATAL ERROR: (...) process out of memory</pre></code><figure></figure></section><section id="memory-go-result"><h3>Concurrency - Memory Usage</h3><h2>Go</h2><hr><code class="language-bash"><pre>ab -n 10000 -c 100 http://127.0.0.1:8100/
+
+...
+Time taken for tests:   20.689 seconds
+Complete requests:      10000
+...
+
+# IT WORKS!</pre></code><figure></figure></section><section><h2>A lot more</h2><hr><ul class="left"><li>+ Lightweight</li><li>+ Relatively easy to learn</li><li>+ Static Typing</li><li>+ Ultra Fast Compilation</li><li>+ Simple but flexible object system</li><li>+ All batteries included</li><li>+ Functions as first class</li></ul></section><section data-bespoke-state="emphatic"><img src="images/gopherbiplane.png"><hr><h2>It is great alternative</h2><h3>Try it!</h3></section><section><h2>Thanks</h2><p>@sebasporto</p></section></article><script src="bower_components/bespoke.js/dist/bespoke.min.js"></script><script src="bower_components/bespoke-bullets/dist/bespoke-bullets.min.js"></script><script src="bower_components/bespoke-hash/dist/bespoke-hash.min.js"></script><script src="bower_components/bespoke-state/dist/bespoke-state.min.js"></script><script src="bower_components/prism/prism.js"></script><script src="scripts/prism.ruby.js"></script><script src="bower_components/prism/components/prism-clike.js"></script><script src="bower_components/prism/components/prism-bash.js"></script><script src="scripts/main.js"></script></body></html>
