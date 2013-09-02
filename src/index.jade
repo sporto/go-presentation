@@ -21,6 +21,7 @@ html
 
 			section
 				h2 Why Go use for building web application?
+				h3 Comparing it to Ruby and JS
 
 			section#fast-intro
 				figure
@@ -135,19 +136,6 @@ html
 							res.end(b);
 						}).listen(8100);
 
-			section#memory-node-result
-				h3 Concurrency - Memory Usage
-				h2 Node.js
-				hr
-				code.language-bash
-					pre.
-						# Run benchmark
-						ab -n 10000 -c 100 http://127.0.0.1:8100/
-
-						# Very likely to get this
-						FATAL ERROR: (...) process out of memory
-				figure
-
 			section
 				h3 Concurrency - Memory Usage
 				h2 Go
@@ -170,6 +158,19 @@ html
 							http.ListenAndServe(":8100", nil)
 						}
 
+			section#memory-node-result
+				h3 Concurrency - Memory Usage
+				h2 Node.js
+				hr
+				code.language-bash
+					pre.
+						# Run benchmark
+						ab -n 10000 -c 100 http://127.0.0.1:8100/
+
+						# Very likely to get this
+						FATAL ERROR: (...) process out of memory
+				figure
+
 			section#memory-go-result
 				h3 Concurrency - Memory Usage
 				h2 Go
@@ -186,82 +187,23 @@ html
 						# IT WORKS!
 				figure
 
-			section(data-bespoke-state='emphatic')
-				h2 It is awesome
-				h3 Try it!
-
-			section(data-bespoke-state='emphatic')
-				h2 But there is a lot more ...
-
-			section#simple
-				h2 Simple
-				hr
-				ul
-					li Lightweight
-					li Relatively easy to learn
-					li Yet flexible
-
 			section
-				h2 Static typing
-				h3 Yes this is useful!
+				h2 A lot more
 				hr
 				ul.left
-					li + Faster - Compiler can go crazy with optimisations
-					li + Easier to refactor
-					li + Developer efficiency - less tests
-
-			section
-				h2 Static typing 
-				h3 Without the ceremony
-				code.language-clike
-					pre.
-						# Java, C#
-						Circle c = new Circle(15);
-
-						# go
-						c := Circle{R: 15}
-
-			section
-				h2 Ultra Fast Compilation
-				hr
-				img(src='images/flash.png')
-
-			section
-				h2 Imports
-				ul
-					li Embeded in the source code
-					li No need for gemfile, package.json, etc
-				hr
-				code.language-clike
-					pre.
-						import(
-							'github.com/sporto/something'
-						)
-
-			section
-				h2 Object system
-				hr
-				ul
-					li It is all composition
-					li Inferred - If it quacks then it is a duck
-
-			section
-				h2 Modern Standard Library
-				hr
-				ul.left
-					li + http
-					li + crypto
-					li + sockets
-					li ... all batteries included
-
-			section
-				h2 More
-				hr
-				ul.left
-					li + Standardized formatting
-					li + Multiple return values
-					li + Closures
+					li + Lightweight
+					li + Relatively easy to learn
+					li + Static Typing
+					li + Ultra Fast Compilation
+					li + Simple but flexible object system
+					li + All batteries included
 					li + Functions as first class
+
+			section(data-bespoke-state='emphatic')
+				img(src='images/gopherbiplane.png')
+				hr
+				h2 It is great alternative
+				h3 Try it!
 
 			section
 				h2 Thanks
