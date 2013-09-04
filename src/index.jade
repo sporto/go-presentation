@@ -21,7 +21,7 @@ html
 
 			section
 				h2 Why Go use for building web application?
-				
+
 			section
 				h3 Comparing it to languages I 
 					b use 
@@ -30,6 +30,16 @@ html
 				hr
 				h2 Ruby
 				h2 JavaScript
+
+
+			section
+				h2 To start with
+				hr
+				ul.left
+					li + Lightweight
+					li + Relatively easy to learn
+					li + Familiar
+
 
 			section#fast-intro
 				figure
@@ -63,81 +73,8 @@ html
 				hr
 				h3 190x faster than Ruby
 
-			section#concurrency-memory
-				h2 Concurrency - Memory Usage
-				hr
-				figure
 
-			section
-				img(src='images/memory.png')
 
-			section
-				h3 Concurrency - Memory Usage
-				h2 Node.js
-				hr
-				code.language-javascript
-					pre.
-						var http = require('http')
-						var Buffer = require('buffer').Buffer;
-						var n = 1024*1024;
-						var b = new Buffer(n);
-						for (var i = 0; i < n; i++) b[i] = 100;
-
-						http.createServer(function (req, res) {
-							res.writeHead(200);
-							res.end(b);
-						}).listen(8100);
-
-			section
-				h3 Concurrency - Memory Usage
-				h2 Go
-				hr
-				code.language-clike
-					pre.
-						package main
-
-						import "net/http"
-						
-						func main() {
-							bytes := make([]byte, 1024*1024)
-							for i := 0; i < len(bytes); i++ {
-								bytes[i] = 100
-							}
-
-							http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-								w.Write(bytes)
-							})
-							http.ListenAndServe(":8100", nil)
-						}
-
-			section#memory-node-result
-				h3 Concurrency - Memory Usage
-				h2 Node.js
-				hr
-				code.language-bash
-					pre.
-						# Run benchmark
-						ab -n 10000 -c 100 http://127.0.0.1:8100/
-
-						# Very likely to get this
-						FATAL ERROR: (...) process out of memory
-				figure
-
-			section#memory-go-result
-				h3 Concurrency - Memory Usage
-				h2 Go
-				hr
-				code.language-bash
-					pre.
-						ab -n 10000 -c 100 http://127.0.0.1:8100/
-
-						...
-						Time taken for tests:   20.689 seconds
-						Complete requests:      10000
-						...
-
-						# IT WORKS!
-				figure
 
 			section#concurrency-intro
 				h2 Concurrency as core feature
@@ -194,17 +131,35 @@ html
 
 						processConcat(x, y)
 
+
+			section
+				h2 Static typing - the right way
+				hr
+				ul.left
+					li + Less tests
+					li + Compiler can go crazy with optimisations
+					li + No ceremony
+					li + Still flexible
+
+			section
+				h2 Rich standard library
+				hr
+				ul.left
+					li + Http
+					li + Templating
+					li + JSON
+
 			section
 				h2 A lot more
 				hr
 				ul.left
-					li + Lightweight
-					li + Relatively easy to learn
 					li + Ultra Fast Compilation
 					li + Simple but flexible object system
-					li + Rich standard library
+					li + Single binary
 					li + Functions as first class
-					li + Static Typing *
+					li + Build in dependency management
+					li + Standard formating of source code
+
 
 			section(data-bespoke-state='emphatic')
 				img(src='images/gopherbiplane.png')
