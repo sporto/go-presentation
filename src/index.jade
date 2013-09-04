@@ -21,7 +21,15 @@ html
 
 			section
 				h2 Why Go use for building web application?
-				h3 Comparing it to Ruby and JS
+				
+			section
+				h3 Comparing it to languages I 
+					b use 
+					| and 
+					b love
+				hr
+				h2 Ruby
+				h2 JavaScript
 
 			section#fast-intro
 				figure
@@ -34,18 +42,18 @@ html
 						# ruby
 						bubble.call([2, 10, 1, 9, 5, 6, 8, 3, 7, 4])
 				hr
-
 				code.language-javascript
 					pre.
 						// JS
 						bubble([2, 10, 1, 9, 5, 6, 8, 3, 7, 4]);
 				hr
-
 				code.language-clike
 					pre.
 						// Go
 						arr := []int{2, 10, 1, 9, 5, 6, 8, 3, 7, 4}
 						bubble(arr)
+				hr
+				p <a href="https://gist.github.com/sporto/6432229" target="_blank">Code here</a>
 
 			section#speed-conclusion
 				h2 It is fast! 
@@ -55,68 +63,12 @@ html
 				hr
 				h3 190x faster than Ruby
 
-			section#concurrency-intro
-				h2 Concurrency
-				figure
-
-			section#parallel-wallpaper
-				figure
-
-			section
-				h2 Concurrency - Parallel requests
-				hr
-				img(src='images/parallel.png')
-
-			section#ruby-parallel
-				div
-					h3 Concurrency - Parallel requests
-					h2 Ruby
-					figure
-					hr
-					ul
-						li Mutex and Threads :(
-						li EventMachine :(
-
-			section
-				h3 Concurrency - Parallel requests
-				h2 Node.js
-				hr
-				code.language-javascript
-					pre.
-						var defX = Q.defer();
-						var defY = Q.defer();
-
-						var oneAndTwo = Q
-							.all([defX.promise, defY.promise])
-							.then(processConcat);
-
-						requestValue('/x', defX);
-						requestValue('/y', defY);
-
-			section
-				h3 Concurrency - Parallel requests
-				h2 Go
-				hr
-				code.language-clike
-					pre.
-						var cx chan string = make(chan string)
-						var cy chan string = make(chan string)
-
-						go requestValue("/x", cx)
-						go requestValue("/y", cy)
-
-						x := <-cx
-						y := <-cy
-
-						processConcat(x, y)
-
 			section#concurrency-memory
-				h1 &nbsp;
+				h2 Concurrency - Memory Usage
 				hr
 				figure
 
 			section
-				h2 Concurrency - Memory Usage
 				img(src='images/memory.png')
 
 			section
@@ -187,17 +139,72 @@ html
 						# IT WORKS!
 				figure
 
+			section#concurrency-intro
+				h2 Concurrency as core feature
+				figure
+
+			section#parallel-intro
+				h2 Concurrency - Parallel requests
+				hr
+				figure
+
+			section
+				img(src='images/parallel.png')
+
+			section#ruby-parallel
+				div
+					h3 Concurrency - Parallel requests
+					h2 Ruby
+					figure
+					hr
+					ul
+						li Mutex and Threads :(
+						li EventMachine :(
+
+			section
+				h3 Concurrency - Parallel requests
+				h2 Node.js
+				hr
+				code.language-javascript
+					pre.
+						var defX = Q.defer();
+						var defY = Q.defer();
+
+						var oneAndTwo = Q
+							.all([defX.promise, defY.promise])
+							.then(processConcat);
+
+						requestValue('/x', defX);
+						requestValue('/y', defY);
+
+			section
+				h3 Concurrency - Parallel requests
+				h2 Go
+				hr
+				code.language-clike
+					pre.
+						var cx chan string = make(chan string)
+						var cy chan string = make(chan string)
+
+						go requestValue("/x", cx)
+						go requestValue("/y", cy)
+
+						x := <-cx
+						y := <-cy
+
+						processConcat(x, y)
+
 			section
 				h2 A lot more
 				hr
 				ul.left
 					li + Lightweight
 					li + Relatively easy to learn
-					li + Static Typing
 					li + Ultra Fast Compilation
 					li + Simple but flexible object system
-					li + All batteries included
+					li + Rich standard library
 					li + Functions as first class
+					li + Static Typing *
 
 			section(data-bespoke-state='emphatic')
 				img(src='images/gopherbiplane.png')
