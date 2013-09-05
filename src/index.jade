@@ -153,7 +153,15 @@ html
 						# No problems
 
 			section
-				h2 Static typing (+ in my book)
+				h2 Rich standard library
+				hr
+				ul.left
+					li + Http
+					li + Templating
+					li + JSON
+
+			section
+				h2 Static typing (+ IMO)
 				hr
 				ul.left
 					li + More robust
@@ -164,37 +172,20 @@ html
 					li + No ceremony
 
 			section
-				h2 Rich standard library
-				hr
-				ul.left
-					li + Http
-					li + Templating
-					li + JSON
-
-			section
 				h3 Compiled
 				h2 But ultra fast
 
 			section
-				h2 Simple and flexible object system
+				h2 Single binary
 				ul.left
-					li + Composition as the way of doing things
-				hr
-				code.language-clike
-					pre.
-						type Information struct {
-							Name string
-						}
-
-						type Person struct {
-							Information
-						}
+					li + Compile and deploy
+					li + No need to worry about dependencies, e.g. NPM modules, RubyGems
 
 			section
 				h2 A lot more
 				hr
 				ul.left
-					li + Single binary
+					li + Simple and flexible object system - composition
 					li + Functions as first class
 					li + Closures
 					li + Standard formating of source code
