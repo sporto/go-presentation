@@ -193,9 +193,9 @@ a {
   background-size: 480px 320px;
   background-repeat: no-repeat;
 }
-#parallel-wallpaper figure {
-  width: 750px;
-  height: 510px;
+#parallel-intro figure {
+  width: 500px;
+  height: 340px;
   background-image: url("../images/gopher.png");
   -webkit-background-size: 125px 170px;
   -moz-background-size: 125px 170px;
