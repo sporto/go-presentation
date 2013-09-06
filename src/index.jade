@@ -16,11 +16,8 @@ html
 
 			section
 				h1 Go
-				h2 A great language for modern web applications
+				h2 Why use it for building web application?
 				p @sebasporto
-
-			section
-				h2 Why Go use for building web application?
 
 			section
 				h3 Comparing it to languages I 
@@ -131,15 +128,29 @@ html
 
 						processConcat(x, y)
 
+			section
+				h2 Efficient memory usage
+				hr
+				img(src="images/memory.png")
 
 			section
-				h2 Static typing - the right way
+				code.language-bash
+					pre.
+						# Run benchmark
+						ab -n 10000 -c 100 http://127.0.0.1:8100/
 				hr
-				ul.left
-					li + Less tests
-					li + Compiler can go crazy with optimisations
-					li + No ceremony
-					li + Still flexible
+				h3 Node.js
+				code.language-bash
+					pre.
+						FATAL ERROR: (...) process out of memory
+				hr
+				h3 Go
+				code.language-bash
+					pre.
+						Time taken for tests:   20.689 seconds
+						Complete requests:      10000
+
+						# No problems
 
 			section
 				h2 Rich standard library
@@ -150,14 +161,33 @@ html
 					li + JSON
 
 			section
+				h2 Static typing (+ IMO)
+				hr
+				ul.left
+					li + More robust
+					li + Easier to refactor
+					li + Less tests
+					li + Compiler can go crazy with optimisations
+					li + Still flexible (with interfaces)
+					li + No ceremony
+
+			section
+				h3 Compiled
+				h2 But ultra fast
+
+			section
+				h2 Single binary
+				ul.left
+					li + Compile and deploy
+					li + No need to worry about dependencies, e.g. NPM modules, RubyGems
+
+			section
 				h2 A lot more
 				hr
 				ul.left
-					li + Ultra Fast Compilation
-					li + Simple but flexible object system
-					li + Single binary
+					li + Simple and flexible object system - composition
 					li + Functions as first class
-					li + Build in dependency management
+					li + Closures
 					li + Standard formating of source code
 
 
