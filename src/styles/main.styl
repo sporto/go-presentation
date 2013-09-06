@@ -22,6 +22,14 @@ bullet_transition_translate_x = 16px
   margin: 0
   padding: 0
 
+@media print
+  *
+    -webkit-print-color-adjust: exact
+
+@page
+  size: landscape
+  margin: 0
+
 // bespoke.js layout styles
 
 article
@@ -35,8 +43,11 @@ article
     left: 0
     right: 0
     overflow: hidden
-    perspective: 600px
     background-image: url(../images/bg1.png)
+    @media print
+      overflow: visible
+      position: static
+    perspective: 600px
 
 .bespoke-slide
   transition: all slide_transition_length slide_transition_easing
@@ -57,16 +68,26 @@ article
   //background: emphatic
   padding: 40px
   border-radius: 0
+  @media print
+    height: 743px // seems to correspond with an A4, landscape page height
+    width: 100%
+    page-break-before: always
+    position: static
+    margin: 0
 
 .bespoke-before
   transform: translateX(slide_transition_translate_x * -1) rotateY(slide_transition_rotate_y * -1)
 
 .bespoke-after
   transform: translateX(slide_transition_translate_x) rotateY(slide_transition_rotate_y)
+  @media print
+    transform: translateX(0) rotateY(0)
 
 .bespoke-inactive
   opacity: 0
   pointer-events: none
+  @media print
+    opacity 1
 
 .bespoke-active
   opacity: 1
@@ -80,6 +101,8 @@ article
   opacity: 0
   li&
     transform: translateX(bullet_transition_translate_x)
+  @media print
+    opacity: 1
 
 .bespoke-bullet-active
   opacity: 1
@@ -140,6 +163,9 @@ p
 a
   color: #0093CC
   text-decoration: none
+
+
+
 
 .well
 	background: rgba(225, 225, 225, .8)
